@@ -62,7 +62,7 @@ trips_schema = StructType([
 
 
 def agg_calc(spark: SparkSession) -> DataFrame:
-    data_path = os.path.join(Path(__name__).parent, r"path\to\your\data", '*.csv')
+    data_path = os.path.join(Path(__name__).parent, r"./data", '*.csv')
 
     trip_df = spark.read \
         .option("header", "true") \
@@ -145,7 +145,7 @@ def main(spark: SparkSession):
 if __name__ == '__main__':
     main(SparkSession
          .builder
-         .config("spark.jars", r".\jars\mysql-connector-java-8.0.25.jar")
+         .config("spark.jars", r"./jars/mysql-connector-java-8.0.25.jar")
          .appName('Spark Job')
          .getOrCreate())
 
